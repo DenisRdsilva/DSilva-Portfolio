@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:word_cloud/word_cloud_data.dart';
+import 'package:word_cloud/word_cloud_tap.dart';
+import 'package:word_cloud/word_cloud_tap_view.dart';
+
+class WordCloudWidget extends StatefulWidget {
+  final double swidth;
+  final double sheight;
+  final void Function(String) filteredProjects;
+  const WordCloudWidget(
+      {super.key,
+      required this.swidth,
+      required this.sheight,
+      required this.filteredProjects});
+
+  @override
+  State<WordCloudWidget> createState() => _WordCloudWidgetState();
+}
+
+List<Map> wordList = [
+  {'word': 'Dart/Flutter', 'value': 80},
+  {'word': 'Javascript/NodeJS', 'value': 55},
+  {'word': 'Typescript/NextJS', 'value': 65},
+  {'word': 'Javascript/ReactJS', 'value': 60},
+  {'word': 'Typescript/NodeJS', 'value': 55},
+  {'word': 'Javascript/Vanilla', 'value': 50},
+];
+
+class _WordCloudWidgetState extends State<WordCloudWidget> {
+  String wordstring = '';
+
+  @override
+  Widget build(BuildContext context) {
+    WordCloudData wcdata = WordCloudData(data: wordList);
+    WordCloudTap wordtaps = WordCloudTap();
+
+    for (int i = 0; i < wordList.length; i++) {
+      void tap() {
+        wordstring = wordList[i]['word'];
+        widget.filteredProjects(wordstring);
+      }
+
+      wordtaps.addWordtap(wordList[i]['word'], tap);
+    }
+
+    return WordCloudTapView(
+      data: wcdata,
+      wordtap: wordtaps,
+      mintextsize: 20,
+      maxtextsize: 40,
+      mapwidth: widget.swidth,
+      mapheight: widget.sheight,
+      fontWeight: FontWeight.bold,
+      colorlist: const [Colors.white],
+    );
+  }
+}
