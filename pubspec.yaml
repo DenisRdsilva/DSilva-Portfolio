@@ -64,25 +64,31 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/back.png
-    - assets/back1.png
     - assets/me.jpg
     - assets/projects/books.jpeg
     - assets/projects/booksmob.jpeg
+    - assets/projects/booksGG.jpeg
     - assets/projects/calc.jpeg
     - assets/projects/calcmob.jpeg
+    - assets/projects/calcGG.jpeg
     - assets/projects/citiesblog.jpeg
     - assets/projects/citiesblogmob.jpeg
+    - assets/projects/citiesGG.jpeg
     - assets/projects/crystalshop.jpeg
     - assets/projects/crystalshopmob.jpeg
+    - assets/projects/crystalGG.jpeg
     - assets/projects/danieloli.jpeg
     - assets/projects/danielolimob.jpeg
+    - assets/projects/danieloliGG.jpeg
     - assets/projects/pex.jpeg
     - assets/projects/pexmob.jpeg
+    - assets/projects/pexGG.jpeg
     - assets/projects/pokedex.jpeg
     - assets/projects/pokedexmob.jpeg
+    - assets/projects/pokedexGG.jpeg
     - assets/projects/psialice.jpeg
     - assets/projects/psialicemob.jpeg
+    - assets/projects/psialiceGG.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

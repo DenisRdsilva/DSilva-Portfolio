@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:portfol/components/wordCloud.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,24 +27,35 @@ class HomeMobile extends StatefulWidget {
   State<HomeMobile> createState() => _HomeMobileState();
 }
 
-List<double> padValues = [5, 10, 5, 0, 10, 0];
-List<double> fontValues = [30, 15, 25, 20, 15, 20];
+List<double> padValues = [5, 5, 0, 0, 5, 0];
+List<double> fontValues = [25, 15, 20, 17.5, 15, 17.5];
 
 class _HomeMobileState extends State<HomeMobile> {
+  int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 100), () {
+      Timer.periodic(const Duration(seconds: 5), (_) => _changeImage());
+    });
+  }
+
+  void _changeImage() {
+    setState(() {
+      _currentIndex = (_currentIndex + 1) % projectList.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Stack(
         children: [
-          Container(
+          Image.asset(projectList[_currentIndex].imageDesktop,
+              fit: BoxFit.cover,
               width: widget.swidth,
-              height: widget.sheight,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/back1.png'),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.bottomLeft),
-              )),
+              height: widget.sheight * .5),
           Container(
             width: widget.swidth,
             height: widget.sheight,
@@ -88,7 +101,7 @@ class _HomeMobileState extends State<HomeMobile> {
                 ),
                 Container(
                   width: widget.swidth,
-                  height: widget.sheight * .55,
+                  height: widget.sheight * .5,
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -126,12 +139,16 @@ class _HomeMobileState extends State<HomeMobile> {
                             constraints: const BoxConstraints(maxWidth: 400),
                             child: Padding(
                               padding:
-                                  EdgeInsets.only(top: widget.sheight * .17),
+                                  EdgeInsets.only(top: widget.sheight * .2),
                               child: Wrap(children: [
                                 for (int i = 0; i < wordList.length; i++) ...{
                                   Padding(
                                     padding: EdgeInsets.all(padValues[i]),
                                     child: InkWell(
+                                        onTap: () {
+                                          widget.updateFilteredProjects(
+                                              wordList[i]["word"]);
+                                        },
                                         child: Text(wordList[i]["word"],
                                             style: TextStyle(
                                                 color: const Color.fromARGB(
@@ -280,8 +297,8 @@ class _HomeMobileState extends State<HomeMobile> {
                 ),
                 Container(
                   color: Colors.white,
-                  height: 55,
-                  padding: const EdgeInsets.only(top: 15, bottom: 15),
+                  height: 60,
+                  padding: const EdgeInsets.only(top: 10, bottom: 15),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -298,6 +315,10 @@ class _HomeMobileState extends State<HomeMobile> {
                             child: standardButton(
                                 context, Icons.restart_alt, "Resetar")),
                         TextButton(
+                            style: const ButtonStyle(
+                              overlayColor:
+                                  MaterialStatePropertyAll(Colors.transparent),
+                            ),
                             onPressed: () {
                               setState(() {
                                 widget.mobileActive = false;
@@ -306,6 +327,10 @@ class _HomeMobileState extends State<HomeMobile> {
                             child: standardButton(
                                 context, Icons.monitor, "Desktop")),
                         TextButton(
+                            style: const ButtonStyle(
+                              overlayColor:
+                                  MaterialStatePropertyAll(Colors.transparent),
+                            ),
                             onPressed: () {
                               setState(() {
                                 widget.mobileActive = true;

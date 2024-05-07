@@ -7,6 +7,7 @@ class Projects {
   final String name;
   final String type;
   final String imageDesktop;
+  final String imageLarge;
   final String imageMobile;
   final String urlSite;
   bool displayTitle;
@@ -15,6 +16,7 @@ class Projects {
       {required this.name,
       required this.type,
       required this.imageDesktop,
+      required this.imageLarge,
       required this.imageMobile,
       required this.urlSite,
       required this.displayTitle});
@@ -25,6 +27,7 @@ List<Projects> projectList = [
       name: "Psicóloga Alice Medeiros",
       type: "Dart/Flutter",
       imageDesktop: "assets/projects/psialice.jpeg",
+      imageLarge: "assets/projects/psialiceGG.jpeg",
       imageMobile: "assets/projects/psialicemob.jpeg",
       displayTitle: false,
       urlSite: 'https://psialicemedeiros.web.app/#/'),
@@ -32,6 +35,7 @@ List<Projects> projectList = [
       name: "Daniel Oli Fotografias",
       type: "Dart/Flutter",
       imageDesktop: "assets/projects/danieloli.jpeg",
+      imageLarge: "assets/projects/danieloliGG.jpeg",
       imageMobile: "assets/projects/danielolimob.jpeg",
       displayTitle: false,
       urlSite: 'https://ddanieolifotos.vercel.app/'),
@@ -39,6 +43,7 @@ List<Projects> projectList = [
       name: "PEX Delivery de Construção",
       type: "Javascript/ReactJS",
       imageDesktop: "assets/projects/pex.jpeg",
+      imageLarge: "assets/projects/pexGG.jpeg",
       imageMobile: "assets/projects/pexmob.jpeg",
       displayTitle: false,
       urlSite: 'https://pex-web-sj3g.vercel.app/'),
@@ -46,6 +51,7 @@ List<Projects> projectList = [
       name: "Loja de Cristais",
       type: "Dart/Flutter",
       imageDesktop: "assets/projects/crystalshop.jpeg",
+      imageLarge: "assets/projects/crystalGG.jpeg",
       imageMobile: "assets/projects/crystalshopmob.jpeg",
       displayTitle: false,
       urlSite: 'https://crystalonlineshop-695ec.web.app/#/'),
@@ -53,6 +59,7 @@ List<Projects> projectList = [
       name: "Blog de Texto (Cidades)",
       type: "Javascript/Vanilla",
       imageDesktop: "assets/projects/citiesblog.jpeg",
+      imageLarge: "assets/projects/citiesGG.jpeg",
       imageMobile: "assets/projects/citiesblogmob.jpeg",
       displayTitle: false,
       urlSite: 'https://textblog-fd684.web.app/index.html'),
@@ -60,6 +67,7 @@ List<Projects> projectList = [
       name: "Pokedex",
       type: "Typescript/NextJS",
       imageDesktop: "assets/projects/pokedex.jpeg",
+      imageLarge: "assets/projects/pokedexGG.jpeg",
       imageMobile: "assets/projects/pokedexmob.jpeg",
       displayTitle: false,
       urlSite: 'https://denisrdsilva.github.io/Pokedex/'),
@@ -67,6 +75,7 @@ List<Projects> projectList = [
       name: "Biblioteca de Livros",
       type: "Typescript/NodeJS",
       imageDesktop: "assets/projects/books.jpeg",
+      imageLarge: "assets/projects/booksGG.jpeg",
       imageMobile: "assets/projects/booksmob.jpeg",
       displayTitle: false,
       urlSite: 'https://registeringbooks.web.app/'),
@@ -74,6 +83,7 @@ List<Projects> projectList = [
       name: "Calculadora Básica",
       type: "Javascript/NodeJS",
       imageDesktop: "assets/projects/calc.jpeg",
+      imageLarge: "assets/projects/calcGG.jpeg",
       imageMobile: "assets/projects/calcmob.jpeg",
       displayTitle: false,
       urlSite: 'https://basicalculatormath.web.app/'),

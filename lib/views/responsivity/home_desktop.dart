@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:portfol/views/home_view.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,35 +26,59 @@ class HomeDesktop extends StatefulWidget {
 }
 
 class _HomeDesktopState extends State<HomeDesktop> {
+  int _currentIndex = 0; // Track the current carousel image index
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the timer after a slight delay to avoid potential build errors
+    Future.delayed(const Duration(milliseconds: 100), () {
+      Timer.periodic(const Duration(seconds: 5),
+          (_) => _changeImage()); // Change image every 5 seconds
+    });
+  }
+
+  void _changeImage() {
+    setState(() {
+      _currentIndex = (_currentIndex + 1) %
+          projectList.length; // Wrap around for infinite carousel
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Container(
-          width: widget.swidth,
-          height: widget.sheight,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/back.png'),
-                fit: BoxFit.cover,
-                alignment: Alignment.bottomLeft),
-          )),
+      Image.asset(projectList[_currentIndex].imageLarge, fit: BoxFit.cover, width: widget.swidth*5, height: widget.sheight),
+      // Container(
+      //     width: widget.swidth,
+      //     height: widget.sheight,
+      //     decoration: const BoxDecoration(
+      //       image: DecorationImage(
+      //           image: AssetImage('assets/back.png'),
+      //           fit: BoxFit.cover,
+      //           alignment: Alignment.bottomLeft),
+      //     )),
       Container(
         width: widget.swidth,
         height: widget.sheight,
         decoration: const BoxDecoration(
-            gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
-          Colors.black12,
-          Colors.black38,
-          Colors.black54,
-          Colors.black38,
-          Colors.black12
-        ], stops: [
-          .15,
-          .3,
-          .5,
-          .7,
-          .85
-        ])),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Colors.black12,
+              Colors.black38,
+              Colors.black54,
+              Colors.black38,
+              Colors.black12
+            ],
+                stops: [
+              .15,
+              .3,
+              .5,
+              .7,
+              .85
+            ])),
       ),
       SizedBox(
         width: widget.swidth,
@@ -66,7 +92,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: widget.swidth * .4,
+                    width: widget.swidth * .4,
                     height: widget.sheight,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +102,9 @@ class _HomeDesktopState extends State<HomeDesktop> {
                         WordCloudWidget(
                           swidth: widget.swidth * .4,
                           sheight: widget.sheight,
-                          filteredProjects: widget.updateFilteredProjects, minValue: 20, maxValue: 60,
+                          filteredProjects: widget.updateFilteredProjects,
+                          minValue: 20,
+                          maxValue: 60,
                         ),
                       ],
                     )),
