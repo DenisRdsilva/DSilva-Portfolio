@@ -172,7 +172,7 @@ class _HomeMobileState extends State<HomeMobile> {
                                                   left: 10),
                                               width: !widget.mobileActive
                                                   ? 300
-                                                  : 160,
+                                                  : 130,
                                               child: Text(project.name,
                                                   style: const TextStyle(
                                                       fontFamily: "Raleway",
