@@ -6,12 +6,16 @@ import 'package:word_cloud/word_cloud_tap_view.dart';
 class WordCloudWidget extends StatefulWidget {
   final double swidth;
   final double sheight;
+  final double minValue;
+  final double maxValue;
   final void Function(String) filteredProjects;
   const WordCloudWidget(
       {super.key,
       required this.swidth,
       required this.sheight,
-      required this.filteredProjects});
+      required this.filteredProjects,
+      required this.minValue,
+      required this.maxValue});
 
   @override
   State<WordCloudWidget> createState() => _WordCloudWidgetState();
@@ -46,8 +50,8 @@ class _WordCloudWidgetState extends State<WordCloudWidget> {
     return WordCloudTapView(
       data: wcdata,
       wordtap: wordtaps,
-      mintextsize: 20,
-      maxtextsize: 40,
+      mintextsize: widget.minValue,
+      maxtextsize: widget.maxValue,
       mapwidth: widget.swidth,
       mapheight: widget.sheight,
       fontWeight: FontWeight.bold,

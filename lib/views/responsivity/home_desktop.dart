@@ -66,6 +66,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
+                  width: widget.swidth * .4,
                     height: widget.sheight,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +76,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
                         WordCloudWidget(
                           swidth: widget.swidth * .4,
                           sheight: widget.sheight,
-                          filteredProjects: widget.updateFilteredProjects,
+                          filteredProjects: widget.updateFilteredProjects, minValue: 20, maxValue: 60,
                         ),
                       ],
                     )),

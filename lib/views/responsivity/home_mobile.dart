@@ -127,6 +127,7 @@ class _HomeMobileState extends State<HomeMobile> {
                               filteredProjects: widget.updateFilteredProjects,
                               sheight: widget.sheight * .35,
                               swidth: widget.swidth * .9,
+                              minValue: 10, maxValue: 30
                             ),
                           ),
                         ),
