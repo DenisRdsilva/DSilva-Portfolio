@@ -119,7 +119,7 @@ class _HomeMobileState extends State<HomeMobile> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: widget.sheight * .16),
+                        padding: EdgeInsets.only(top: widget.sheight * .1),
                         child: Center(
                           child: ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 400),
