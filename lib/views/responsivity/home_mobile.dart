@@ -1,10 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:portfol/components/wordCloud.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/standardButton.dart';
-import '../../components/wordCloud.dart';
 import '../home_view.dart';
 
 class HomeMobile extends StatefulWidget {
@@ -24,6 +24,9 @@ class HomeMobile extends StatefulWidget {
   @override
   State<HomeMobile> createState() => _HomeMobileState();
 }
+
+List<double> padValues = [5, 10, 5, 0, 10, 0];
+List<double> fontValues = [30, 15, 25, 20, 15, 20];
 
 class _HomeMobileState extends State<HomeMobile> {
   @override
@@ -85,7 +88,7 @@ class _HomeMobileState extends State<HomeMobile> {
                 ),
                 Container(
                   width: widget.swidth,
-                  height: widget.sheight * .48,
+                  height: widget.sheight * .55,
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -97,7 +100,7 @@ class _HomeMobileState extends State<HomeMobile> {
                     ],
                     color: Colors.white,
                   ),
-                  transform: Matrix4.skewY(.01),
+                  transform: Matrix4.skewY(-.04),
                 ),
               ],
             ),
@@ -118,19 +121,27 @@ class _HomeMobileState extends State<HomeMobile> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: widget.sheight * .1),
-                        child: Center(
-                          child: ConstrainedBox(
+                      Center(
+                        child: ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 400),
-                            child: WordCloudWidget(
-                              filteredProjects: widget.updateFilteredProjects,
-                              sheight: widget.sheight * .35,
-                              swidth: widget.swidth * .9,
-                              minValue: 10, maxValue: 30
-                            ),
-                          ),
-                        ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(top: widget.sheight * .17),
+                              child: Wrap(children: [
+                                for (int i = 0; i < wordList.length; i++) ...{
+                                  Padding(
+                                    padding: EdgeInsets.all(padValues[i]),
+                                    child: InkWell(
+                                        child: Text(wordList[i]["word"],
+                                            style: TextStyle(
+                                                color: const Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                                fontSize: fontValues[i],
+                                                fontWeight: FontWeight.bold))),
+                                  )
+                                }
+                              ]),
+                            )),
                       ),
                       Container(
                         width: widget.swidth,
@@ -276,8 +287,8 @@ class _HomeMobileState extends State<HomeMobile> {
                       children: [
                         TextButton(
                             style: const ButtonStyle(
-                              overlayColor: MaterialStatePropertyAll(
-                                  Colors.transparent),
+                              overlayColor:
+                                  MaterialStatePropertyAll(Colors.transparent),
                             ),
                             onPressed: () {
                               setState(() {
