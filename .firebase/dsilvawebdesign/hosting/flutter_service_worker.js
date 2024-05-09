@@ -3,11 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "07a6df24bd03ecaf82e52306b9d2c2e5",
-"assets/AssetManifest.bin.json": "db53d86abca585fe53bf239d949595ee",
-"assets/AssetManifest.json": "8278c6587531c4e5a032c315dc688c0a",
-"assets/assets/back.png": "afecde0397a2d9811aaa9ad22ff82a11",
-"assets/assets/back1.png": "57c75c539a65fef41245850e720b396c",
+const RESOURCES = {"assets/AssetManifest.bin": "0f59fbdaeba5c84a33c13c17c72f758f",
+"assets/AssetManifest.bin.json": "5fe1c764a45c42b13d8a974cef7c49d6",
+"assets/AssetManifest.json": "c85bc78dd4901fa0185ea7bfdb60c218",
 "assets/assets/fonts/Raleway-Bold.ttf": "21c82294041b1504a5cbe4f566c8acd6",
 "assets/assets/fonts/Raleway-Italic.ttf": "5579b5fda3005b7d349336b3425b9f89",
 "assets/assets/fonts/Raleway-Regular.ttf": "d95649da7dfb965a289ac29105ce8771",
@@ -21,9 +19,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "07a6df24bd03ecaf82e52306b9d2c2e5
 "assets/assets/projects/citiesblog.jpeg": "8b6c20387b02142d9d802f84a951d0da",
 "assets/assets/projects/citiesblogmob.jpeg": "2bc191e0b7b69fbd0a10a95d596aea97",
 "assets/assets/projects/citiesGG.jpeg": "ea9d7fd52dd1b9c71915277a79a14ac8",
-"assets/assets/projects/crystalGG.jpeg": "5d11148d93a7834ee251999af5670de4",
-"assets/assets/projects/crystalshop.jpeg": "6c091798b3b247c4e78f45f230eb9e79",
-"assets/assets/projects/crystalshopmob.jpeg": "71691732e88fd7067eddf6a6e2153262",
+"assets/assets/projects/crystalGG.jpeg": "44b5286d15fbee76d8cc9d023b4b54a5",
+"assets/assets/projects/crystalshop.jpeg": "4fe3117e5a5338eba0b55b1dca6c680a",
+"assets/assets/projects/crystalshopmob.jpeg": "f306c5032759d28cd38affe2a024f436",
 "assets/assets/projects/danieloli.jpeg": "e2c01878edea6718c478c59f8a2520d9",
 "assets/assets/projects/danieloliGG.jpeg": "88bed8e8377666bb03de6d66e11359ed",
 "assets/assets/projects/danielolimob.jpeg": "6213601b4a5d3c5680f6381d3e699461",
@@ -60,9 +58,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "07a6df24bd03ecaf82e52306b9d2c2e5
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "f84869ba2f99430e543296db519080f3",
-"/": "f84869ba2f99430e543296db519080f3",
-"main.dart.js": "58cdc3b19f0963217406813b622dd6f0",
+"index.html": "8e36d86ec5e9bc3a7b01b92daabab626",
+"/": "8e36d86ec5e9bc3a7b01b92daabab626",
+"main.dart.js": "1744b59236de7482bb0f7147ac33332f",
 "manifest.json": "e463b3947f288bb40c5e87c67716a736",
 "version.json": "1d3fa036e39f58f2533921dc98aa93c2"};
 // The application shell files that are downloaded before a service worker can

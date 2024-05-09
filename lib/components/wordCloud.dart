@@ -47,6 +47,7 @@ class _WordCloudWidgetState extends State<WordCloudWidget> {
       wordtaps.addWordtap(wordList[i]['word'], tap);
     }
 
+
     return WordCloudTapView(
       data: wcdata,
       wordtap: wordtaps,

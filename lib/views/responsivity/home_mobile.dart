@@ -27,11 +27,12 @@ class HomeMobile extends StatefulWidget {
   State<HomeMobile> createState() => _HomeMobileState();
 }
 
-List<double> padValues = [5, 5, 0, 0, 5, 0];
-List<double> fontValues = [25, 15, 20, 17.5, 15, 17.5];
+List<double> padValues = [5, 3, 0, 2, 5, 0];
+List<double> fontValues = [25, 16, 20, 17.5, 15, 17.5];
 
 class _HomeMobileState extends State<HomeMobile> {
   int _currentIndex = 0;
+  bool isVisible = true;
 
   @override
   void initState() {
@@ -47,15 +48,29 @@ class _HomeMobileState extends State<HomeMobile> {
     });
   }
 
+    void changeVisibility() {
+    setState(() {
+      isVisible = false;
+    });
+    Future.delayed(const Duration(milliseconds: 1500), (() {
+      setState(() {
+        isVisible = true;
+      });
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Stack(
         children: [
-          Image.asset(projectList[_currentIndex].imageDesktop,
-              fit: BoxFit.cover,
-              width: widget.swidth,
-              height: widget.sheight * .5),
+          Padding(
+            padding: EdgeInsets.only(top: widget.sheight * .15),
+            child: Image.asset(projectList[_currentIndex].imageDesktop,
+                fit: BoxFit.cover,
+                width: widget.swidth,
+                height: widget.sheight * .4),
+          ),
           Container(
             width: widget.swidth,
             height: widget.sheight,
@@ -91,7 +106,7 @@ class _HomeMobileState extends State<HomeMobile> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.shade400,
-                        blurRadius: 5.0,
+                        blurRadius: 3.0,
                         spreadRadius: 3.0,
                         offset: const Offset(2.0, 2.0),
                       )
@@ -106,7 +121,7 @@ class _HomeMobileState extends State<HomeMobile> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.shade400,
-                        blurRadius: 5.0,
+                        blurRadius: 3.0,
                         spreadRadius: 3.0,
                         offset: const Offset(2.0, 2.0),
                       )
@@ -151,6 +166,20 @@ class _HomeMobileState extends State<HomeMobile> {
                                         },
                                         child: Text(wordList[i]["word"],
                                             style: TextStyle(
+                                                shadows: const <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(3, 3),
+                                                    blurRadius: 3.0,
+                                                    color: Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                  ),
+                                                  Shadow(
+                                                    offset: Offset(3, 3),
+                                                    blurRadius: 8.0,
+                                                    color: Color.fromARGB(
+                                                        125, 0, 0, 255),
+                                                  ),
+                                                ],
                                                 color: const Color.fromARGB(
                                                     255, 255, 255, 255),
                                                 fontSize: fontValues[i],
@@ -173,35 +202,29 @@ class _HomeMobileState extends State<HomeMobile> {
                                   },
                                   child: Stack(
                                     children: [
-                                      !widget.mobileActive
-                                          ? Container(
-                                              width: 300,
-                                              height: 160,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.grey,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              child: Image.asset(
-                                                  project.imageDesktop),
-                                            )
-                                          : Container(
-                                              width: 130,
-                                              height: 240,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.grey,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              child: Image.asset(
-                                                  project.imageMobile),
-                                            ),
+                                      AnimatedContainer(
+                                          duration: const Duration(milliseconds: 1500),
+                                          width:
+                                              !widget.mobileActive ? 300 : 130,
+                                          height:
+                                              !widget.mobileActive ? 160 : 240,
+                                          color: Colors.black12,
+                                          child: Visibility(
+                                            visible: isVisible,
+                                            child: !widget.mobileActive
+                                                ? Image.asset(
+                                                    project.imageDesktop)
+                                                : Image.asset(
+                                                    project.imageMobile),
+                                          )),
                                       Material(
                                           color: Colors.black38,
-                                          child: Container(
+                                          child:  AnimatedContainer(
+                                          duration: const Duration(milliseconds: 1500),
+                                          width:
+                                              !widget.mobileActive ? 300 : 130,
                                               padding: const EdgeInsets.only(
                                                   left: 10),
-                                              width: !widget.mobileActive
-                                                  ? 300
-                                                  : 130,
                                               child: Text(project.name,
                                                   style: const TextStyle(
                                                       fontFamily: "Raleway",
@@ -258,39 +281,6 @@ class _HomeMobileState extends State<HomeMobile> {
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white))),
                         const SizedBox(width: 15),
-                        // InkWell(
-                        //     onTap: () {
-                        //       showDialog(
-                        //           context: context,
-                        //           builder: ((context) {
-                        //             return AlertDialog(
-                        //               content: Column(
-                        //                 mainAxisSize: MainAxisSize.min,
-                        //                 crossAxisAlignment:
-                        //                     CrossAxisAlignment.center,
-                        //                 children: [
-                        //                   for (var word in wordList) ...{
-                        //                     TextButton(
-                        //                         onPressed: () {
-                        //                           widget.updateFilteredProjects(
-                        //                               word["word"]);
-                        //                           Navigator.of(context).pop();
-                        //                         },
-                        //                         child: Text(word["word"],
-                        //                             style: const TextStyle(
-                        //                                 fontFamily:
-                        //                                     "Raleway"))),
-                        //                   }
-                        //                 ],
-                        //               ),
-                        //             );
-                        //           }));
-                        //     },
-                        //     child: const Text("Filtrar",
-                        //         style: TextStyle(
-                        //             fontFamily: "Raleway",
-                        //             fontWeight: FontWeight.bold,
-                        // color: Colors.white))),
                       ],
                     ),
                   ),
@@ -320,6 +310,7 @@ class _HomeMobileState extends State<HomeMobile> {
                                   MaterialStatePropertyAll(Colors.transparent),
                             ),
                             onPressed: () {
+                              changeVisibility();
                               setState(() {
                                 widget.mobileActive = false;
                               });
@@ -332,6 +323,7 @@ class _HomeMobileState extends State<HomeMobile> {
                                   MaterialStatePropertyAll(Colors.transparent),
                             ),
                             onPressed: () {
+                              changeVisibility();
                               setState(() {
                                 widget.mobileActive = true;
                               });

@@ -26,38 +26,39 @@ class HomeDesktop extends StatefulWidget {
 }
 
 class _HomeDesktopState extends State<HomeDesktop> {
-  int _currentIndex = 0; // Track the current carousel image index
+  int _currentIndex = 0;
+  bool isVisible = true;
 
   @override
   void initState() {
     super.initState();
-    // Start the timer after a slight delay to avoid potential build errors
     Future.delayed(const Duration(milliseconds: 100), () {
-      Timer.periodic(const Duration(seconds: 5),
-          (_) => _changeImage()); // Change image every 5 seconds
+      Timer.periodic(const Duration(seconds: 5), (_) => _changeImage());
     });
   }
 
   void _changeImage() {
     setState(() {
-      _currentIndex = (_currentIndex + 1) %
-          projectList.length; // Wrap around for infinite carousel
+      _currentIndex = (_currentIndex + 1) % projectList.length;
     });
+  }
+
+  void changeVisibility() {
+    setState(() {
+      isVisible = false;
+    });
+    Future.delayed(const Duration(milliseconds: 1500), (() {
+      setState(() {
+        isVisible = true;
+      });
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Image.asset(projectList[_currentIndex].imageLarge, fit: BoxFit.cover, width: widget.swidth*5, height: widget.sheight),
-      // Container(
-      //     width: widget.swidth,
-      //     height: widget.sheight,
-      //     decoration: const BoxDecoration(
-      //       image: DecorationImage(
-      //           image: AssetImage('assets/back.png'),
-      //           fit: BoxFit.cover,
-      //           alignment: Alignment.bottomLeft),
-      //     )),
+      Image.asset(projectList[_currentIndex].imageLarge,
+          fit: BoxFit.cover, width: widget.swidth * 5, height: widget.sheight),
       Container(
         width: widget.swidth,
         height: widget.sheight,
@@ -99,12 +100,15 @@ class _HomeDesktopState extends State<HomeDesktop> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        WordCloudWidget(
-                          swidth: widget.swidth * .4,
-                          sheight: widget.sheight,
-                          filteredProjects: widget.updateFilteredProjects,
-                          minValue: 20,
-                          maxValue: 60,
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: WordCloudWidget(
+                            swidth: widget.swidth * .4,
+                            sheight: widget.sheight,
+                            filteredProjects: widget.updateFilteredProjects,
+                            minValue: 20,
+                            maxValue: 60,
+                          ),
                         ),
                       ],
                     )),
@@ -232,6 +236,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                     context, Icons.restart_alt, "Resetar")),
                             TextButton(
                                 onPressed: () {
+                                  changeVisibility();
                                   setState(() {
                                     widget.mobileActive = false;
                                   });
@@ -240,6 +245,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                     context, Icons.monitor, "Desktop")),
                             TextButton(
                                 onPressed: () {
+                                  changeVisibility();
                                   setState(() {
                                     widget.mobileActive = true;
                                   });
@@ -270,50 +276,46 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                       child: Stack(
                                         children: [
                                           MouseRegion(
-                                            onEnter: (value) {
-                                              setState(() {
-                                                project.displayTitle = true;
-                                              });
-                                            },
-                                            onExit: (value) {
-                                              setState(() {
-                                                project.displayTitle = false;
-                                              });
-                                            },
-                                            child: !widget.mobileActive
-                                                ? Container(
-                                                    width: 240,
-                                                    height: 130,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.grey,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5)),
-                                                    child: Image.asset(
-                                                        project.imageDesktop),
-                                                  )
-                                                : Container(
-                                                    width: 130,
-                                                    height: 240,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.grey,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5)),
-                                                    child: Image.asset(
-                                                        project.imageMobile),
-                                                  ),
-                                          ),
+                                              onEnter: (value) {
+                                                setState(() {
+                                                  project.displayTitle = true;
+                                                });
+                                              },
+                                              onExit: (value) {
+                                                setState(() {
+                                                  project.displayTitle = false;
+                                                });
+                                              },
+                                              child: AnimatedContainer(
+                                                  duration: const Duration(
+                                                      milliseconds: 1500),
+                                                  width: !widget.mobileActive
+                                                      ? 240
+                                                      : 130,
+                                                  height: !widget.mobileActive
+                                                      ? 130
+                                                      : 240,
+                                                  color: Colors.black12,
+                                                  child: Visibility(
+                                                    visible: isVisible,
+                                                    child: !widget.mobileActive
+                                                        ? Image.asset(project
+                                                            .imageDesktop)
+                                                        : Image.asset(project
+                                                            .imageMobile),
+                                                  ))),
                                           if (project.displayTitle) ...{
                                             Material(
                                                 color: Colors.black38,
-                                                child: Container(
+                                                child: AnimatedContainer(
+                                                    duration: const Duration(
+                                                        milliseconds: 1500),
+                                                    width: !widget.mobileActive
+                                                        ? 300
+                                                        : 130,
                                                     padding:
                                                         const EdgeInsets.only(
                                                             left: 10),
-                                                    width: !widget.mobileActive
-                                                        ? 240
-                                                        : 130,
                                                     child: Text(project.name,
                                                         style: const TextStyle(
                                                             fontFamily:
