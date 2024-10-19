@@ -15,6 +15,8 @@ class Portfol extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "DSilvaPortfolio",
       home: const HomePage(),
+      theme: ThemeData(
+          colorScheme: colorTheme),
       onGenerateRoute: (settings) {
         if (settings.name == null) {
           return null;
@@ -35,3 +37,14 @@ class Portfol extends StatelessWidget {
     );
   }
 }
+
+ColorScheme colorTheme = ColorScheme(
+    brightness: Brightness.light,
+    primary: Colors.white,
+    onPrimary: Colors.black,
+    secondary: Color.fromARGB(255, 39, 28, 110),
+    onSecondary: Color.fromARGB(255, 39, 28, 110),
+    error: Colors.red,
+    onError: Colors.red,
+    surface: Colors.white,
+    onSurface: Colors.white);

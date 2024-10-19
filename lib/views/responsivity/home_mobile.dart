@@ -7,6 +7,8 @@ import 'package:portfol/components/wordCloud.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/standardButton.dart';
+import '../../main.dart';
+import '../constants.dart';
 import '../home_view.dart';
 
 class HomeMobile extends StatefulWidget {
@@ -48,7 +50,7 @@ class _HomeMobileState extends State<HomeMobile> {
     });
   }
 
-    void changeVisibility() {
+  void changeVisibility() {
     setState(() {
       isVisible = false;
     });
@@ -111,7 +113,7 @@ class _HomeMobileState extends State<HomeMobile> {
                         offset: const Offset(2.0, 2.0),
                       )
                     ],
-                    color: Colors.white,
+                    color: colorTheme.primary,
                   ),
                 ),
                 Container(
@@ -126,7 +128,7 @@ class _HomeMobileState extends State<HomeMobile> {
                         offset: const Offset(2.0, 2.0),
                       )
                     ],
-                    color: Colors.white,
+                    color: colorTheme.primary,
                   ),
                   transform: Matrix4.skewY(-.04),
                 ),
@@ -203,7 +205,8 @@ class _HomeMobileState extends State<HomeMobile> {
                                   child: Stack(
                                     children: [
                                       AnimatedContainer(
-                                          duration: const Duration(milliseconds: 1500),
+                                          duration:
+                                              const Duration(milliseconds: 500),
                                           width:
                                               !widget.mobileActive ? 300 : 130,
                                           height:
@@ -219,16 +222,18 @@ class _HomeMobileState extends State<HomeMobile> {
                                           )),
                                       Material(
                                           color: Colors.black38,
-                                          child:  AnimatedContainer(
-                                          duration: const Duration(milliseconds: 1500),
-                                          width:
-                                              !widget.mobileActive ? 300 : 130,
+                                          child: AnimatedContainer(
+                                              duration: const Duration(
+                                                  milliseconds: 500),
+                                              width: !widget.mobileActive
+                                                  ? 300
+                                                  : 130,
                                               padding: const EdgeInsets.only(
                                                   left: 10),
                                               child: Text(project.name,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                       fontFamily: "Raleway",
-                                                      color: Colors.white))))
+                                                      color: colorTheme.primary))))
                                     ],
                                   ))
                             }
@@ -259,9 +264,9 @@ class _HomeMobileState extends State<HomeMobile> {
                     maxWidth: 600,
                   ),
                   width: widget.swidth,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 39, 28, 110),
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    color: colorTheme.secondary,
+                    borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.elliptical(200, 200)),
                   ),
                   child: Padding(
@@ -275,18 +280,24 @@ class _HomeMobileState extends State<HomeMobile> {
                             onTap: () {
                               aboutMeModal(context, widget.swidth);
                             },
-                            child: const Text("Sobre mim",
-                                style: TextStyle(
-                                    fontFamily: "Raleway",
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white))),
-                        const SizedBox(width: 15),
+                            child: Row(children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Text("Sobre mim",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "Raleway",
+                                        color: colorTheme.primary)),
+                              ),
+                              Icon(Icons.more, color: colorTheme.primary, size: 16),
+                              const SizedBox(width: 10)
+                            ])),
                       ],
                     ),
                   ),
                 ),
                 Container(
-                  color: Colors.white,
+                  color: colorTheme.primary,
                   height: 60,
                   padding: const EdgeInsets.only(top: 10, bottom: 15),
                   child: Row(
@@ -340,17 +351,17 @@ class _HomeMobileState extends State<HomeMobile> {
               ),
               width: widget.swidth * .6,
               height: 40,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 39, 28, 110),
-                borderRadius: BorderRadius.only(topRight: Radius.circular(75)),
+              decoration: BoxDecoration(
+                color: colorTheme.secondary,
+                borderRadius: const BorderRadius.only(topRight: Radius.circular(75)),
               ),
-              child: const Center(
+              child: Center(
                 child: Text('DSilva © 2024',
                     style: TextStyle(
                         fontFamily: "Raleway",
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Colors.white)),
+                        color: colorTheme.primary)),
               ),
             ),
           ],
@@ -358,47 +369,4 @@ class _HomeMobileState extends State<HomeMobile> {
       ),
     ]);
   }
-}
-
-void aboutMeModal(context, swidth) {
-  showDialog(
-      context: context,
-      builder: ((context) {
-        return const AlertDialog(
-            content: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: CircleAvatar(
-                    radius: 80, backgroundImage: AssetImage('assets/me.jpg')),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                      'Dênis Silva é técnico em TI, com ênfase em informática para Internet e graduando em Sistemas para Internet, além de atuar como estagiário em Desenvolvimento Front-End na Velty.',
-                      style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500)),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    child: Text('E-mail: denisrsilva95@gmail.com',
-                        style: TextStyle(
-                            fontFamily: "Raleway",
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                  ),
-                  Text('Número: +55 (84) 99628-5407',
-                      style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500)),
-                ],
-              )
-            ]));
-      }));
 }

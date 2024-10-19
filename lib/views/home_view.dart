@@ -3,94 +3,61 @@ import 'package:portfol/views/responsivity/home_desktop.dart';
 import 'package:portfol/views/responsivity/home_mobile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Projects {
-  final String name;
-  final String type;
-  final String imageDesktop;
-  final String imageLarge;
-  final String imageMobile;
-  final String urlSite;
-  bool displayTitle;
+import '../main.dart';
+import 'constants.dart';
 
-  Projects(
-      {required this.name,
-      required this.type,
-      required this.imageDesktop,
-      required this.imageLarge,
-      required this.imageMobile,
-      required this.urlSite,
-      required this.displayTitle});
+void aboutMeModal(context, swidth) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: SingleChildScrollView(
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 900),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                   Text("SOBRE MIM",
+                      style: TextStyle(
+                          color: colorTheme.secondary,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Raleway")),
+                  const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        for (var aboutMe in aboutMeList) ...{
+                          Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                aboutMe.title,
+                                style: TextStyle(
+                                    fontFamily: "Raleway",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: colorTheme.secondary),
+                              )),
+                          for (var text in aboutMe.texts) ...{
+                            Text(text, style: TextStyle(fontSize: 14, color: colorTheme.onPrimary)),
+                          }
+                        }
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      });
 }
 
-List<Projects> projectList = [
-  Projects(
-      name: "Psicóloga Alice Medeiros",
-      type: "Dart/Flutter",
-      imageDesktop: "assets/projects/psialice.jpeg",
-      imageLarge: "assets/projects/psialiceGG.jpeg",
-      imageMobile: "assets/projects/psialicemob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://psialicemedeiros.web.app/#/'),
-  Projects(
-      name: "Daniel Oli Fotografias",
-      type: "Dart/Flutter",
-      imageDesktop: "assets/projects/danieloli.jpeg",
-      imageLarge: "assets/projects/danieloliGG.jpeg",
-      imageMobile: "assets/projects/danielolimob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://ddanieolifotos.vercel.app/'),
-  Projects(
-      name: "PEX Delivery de Construção",
-      type: "Javascript/ReactJS",
-      imageDesktop: "assets/projects/pex.jpeg",
-      imageLarge: "assets/projects/pexGG.jpeg",
-      imageMobile: "assets/projects/pexmob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://pex-web-sj3g.vercel.app/'),
-  Projects(
-      name: "Loja de Cristais",
-      type: "Dart/Flutter",
-      imageDesktop: "assets/projects/crystalshop.jpeg",
-      imageLarge: "assets/projects/crystalGG.jpeg",
-      imageMobile: "assets/projects/crystalshopmob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://crystalonlineshop-695ec.web.app/#/'),
-  Projects(
-      name: "Blog de Texto (Cidades)",
-      type: "Javascript/Vanilla",
-      imageDesktop: "assets/projects/citiesblog.jpeg",
-      imageLarge: "assets/projects/citiesGG.jpeg",
-      imageMobile: "assets/projects/citiesblogmob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://textblog-fd684.web.app/index.html'),
-  Projects(
-      name: "Pokedex",
-      type: "Typescript/NextJS",
-      imageDesktop: "assets/projects/pokedex.jpeg",
-      imageLarge: "assets/projects/pokedexGG.jpeg",
-      imageMobile: "assets/projects/pokedexmob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://denisrdsilva.github.io/Pokedex/'),
-  Projects(
-      name: "Biblioteca de Livros",
-      type: "Typescript/NodeJS",
-      imageDesktop: "assets/projects/books.jpeg",
-      imageLarge: "assets/projects/booksGG.jpeg",
-      imageMobile: "assets/projects/booksmob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://registeringbooks.web.app/'),
-  Projects(
-      name: "Calculadora Básica",
-      type: "Javascript/NodeJS",
-      imageDesktop: "assets/projects/calc.jpeg",
-      imageLarge: "assets/projects/calcGG.jpeg",
-      imageMobile: "assets/projects/calcmob.jpeg",
-      displayTitle: false,
-      urlSite: 'https://basicalculatormath.web.app/'),
-];
-
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   State<HomePage> createState() => _HomePageState();
 }

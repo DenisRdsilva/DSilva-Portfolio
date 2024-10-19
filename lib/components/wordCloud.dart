@@ -3,6 +3,8 @@ import 'package:word_cloud/word_cloud_data.dart';
 import 'package:word_cloud/word_cloud_tap.dart';
 import 'package:word_cloud/word_cloud_tap_view.dart';
 
+import '../main.dart';
+
 class WordCloudWidget extends StatefulWidget {
   final double swidth;
   final double sheight;
@@ -56,7 +58,7 @@ class _WordCloudWidgetState extends State<WordCloudWidget> {
       mapwidth: widget.swidth,
       mapheight: widget.sheight,
       fontWeight: FontWeight.bold,
-      colorlist: const [Colors.white],
+      colorlist: [colorTheme.primary],
     );
   }
 }

@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/standardButton.dart';
 import '../../components/wordCloud.dart';
+import '../../main.dart';
+import '../constants.dart';
 
 class HomeDesktop extends StatefulWidget {
   final double swidth;
@@ -142,11 +144,11 @@ class _HomeDesktopState extends State<HomeDesktop> {
                           Container(
                             height: 60,
                             width: 60,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(100),
                                   bottomLeft: Radius.circular(100)),
-                              color: Colors.white,
+                              color: colorTheme.primary,
                             ),
                           ),
                         ],
@@ -158,12 +160,12 @@ class _HomeDesktopState extends State<HomeDesktop> {
                       // clipBehavior: ,
                       child: Stack(
                         children: [
-                          Container(
+                          SizedBox(
                             width: widget.swidth * .6,
                             height: widget.sheight,
                             child: Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
+                              decoration: BoxDecoration(
+                                color: colorTheme.primary,
                               ),
                               transform: Matrix4.skewX(0.1),
                             ),
@@ -176,9 +178,9 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                   minHeight: 200,
                                 ),
                                 width: widget.swidth * .6,
-                                decoration: const BoxDecoration(
-                                  color: Color.fromARGB(255, 39, 28, 110),
-                                  borderRadius: BorderRadius.only(
+                                decoration: BoxDecoration(
+                                  color: colorTheme.secondary,
+                                  borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.elliptical(200, 200)),
                                 ),
                                 child: Visibility(
@@ -203,26 +205,37 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              SizedBox(
-                                                height: 75,
-                                                width: widget.swidth * .35,
-                                                child: const Text(
-                                                    "Dênis Silva é técnico em TI, com ênfase em informática para Internet e graduando em Sistemas para Internet, além de estagiar como Desenvolvedor Front-End na Velty.",
-                                                    softWrap: true,
-                                                    style: TextStyle(
-                                                        fontFamily: "Raleway",
-                                                        fontSize: 16,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w500)),
+                                              Tooltip(
+                                                message: "Clique para saber mais",
+                                                child: InkWell(
+                                                    onTap: () {
+                                                      aboutMeModal(context, widget.swidth);
+                                                    },
+                                                    child: Row(
+                                                      children: [
+                                                        const Padding(
+                                                          padding: EdgeInsets.only(right: 8.0),
+                                                          child: Text("Sobre mim",
+                                                              style: TextStyle(
+                                                                fontWeight: FontWeight.bold,
+                                                                  fontFamily:
+                                                                      "Raleway",
+                                                                  fontSize: 16,
+                                                                  color: Colors
+                                                                      .white)),
+                                                        ),
+                                                        Icon(Icons.more,
+                                                            color: colorTheme.primary, size: 20),
+                                                      ],
+                                                    )),
                                               ),
-                                              const Wrap(
+                                              Wrap(
                                                 children: [
                                                   Text('E-mail: ',
                                                       style: TextStyle(
                                                           fontFamily: "Raleway",
                                                           fontSize: 16,
-                                                          color: Colors.white,
+                                                          color: colorTheme.primary,
                                                           fontWeight:
                                                               FontWeight.w500)),
                                                   Text(
@@ -230,25 +243,25 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                                       style: TextStyle(
                                                           fontFamily: "Raleway",
                                                           fontSize: 16,
-                                                          color: Colors.white,
+                                                          color: colorTheme.primary,
                                                           fontWeight:
                                                               FontWeight.w500)),
                                                 ],
                                               ),
-                                              const Wrap(
+                                               Wrap(
                                                 children: [
                                                   Text('Número: ',
                                                       style: TextStyle(
                                                           fontFamily: "Raleway",
                                                           fontSize: 16,
-                                                          color: Colors.white,
+                                                          color: colorTheme.primary,
                                                           fontWeight:
                                                               FontWeight.w500)),
                                                   Text('+55 (84) 99628-5407',
                                                       style: TextStyle(
                                                           fontFamily: "Raleway",
                                                           fontSize: 16,
-                                                          color: Colors.white,
+                                                          color: colorTheme.primary,
                                                           fontWeight:
                                                               FontWeight.w500)),
                                                 ],
@@ -345,7 +358,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                                               AnimatedContainer(
                                                                   duration: const Duration(
                                                                       milliseconds:
-                                                                          1500),
+                                                                          1000),
                                                                   width: !widget
                                                                           .mobileActive
                                                                       ? 240
@@ -375,7 +388,7 @@ class _HomeDesktopState extends State<HomeDesktop> {
                                                             child: AnimatedContainer(
                                                                 duration: const Duration(
                                                                     milliseconds:
-                                                                        1500),
+                                                                        1000),
                                                                 width: !widget
                                                                         .mobileActive
                                                                     ? 240
@@ -420,9 +433,9 @@ class _HomeDesktopState extends State<HomeDesktop> {
                             elevation: 10,
                             shape: const CircleBorder(eccentricity: 1),
                             child: IconButton(
-                                style: const ButtonStyle(
+                                style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStatePropertyAll(Colors.white)),
+                                        MaterialStatePropertyAll(colorTheme.primary)),
                                 onPressed: () {
                                   setState(() {
                                     if (expandPanel == true) {
@@ -474,17 +487,17 @@ class _HomeDesktopState extends State<HomeDesktop> {
               ),
               width: widget.swidth * .6,
               height: 50,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 39, 28, 110),
-                borderRadius: BorderRadius.only(topRight: Radius.circular(75)),
+              decoration: BoxDecoration(
+                color: colorTheme.secondary,
+                borderRadius: const BorderRadius.only(topRight: Radius.circular(75)),
               ),
-              child: const Center(
+              child: Center(
                 child: Text('DSilva © 2024',
                     style: TextStyle(
                         fontFamily: "Raleway",
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: Colors.white)),
+                        color: colorTheme.primary)),
               ),
             ),
           ],
