@@ -3,9 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "0f59fbdaeba5c84a33c13c17c72f758f",
-"assets/AssetManifest.bin.json": "5fe1c764a45c42b13d8a974cef7c49d6",
-"assets/AssetManifest.json": "c85bc78dd4901fa0185ea7bfdb60c218",
+const RESOURCES = {"assets/AssetManifest.bin": "2e29898b4df97024709272d7883d570a",
+"assets/AssetManifest.bin.json": "3c1b8c78a7643b4f68b57acc37a8c80c",
+"assets/AssetManifest.json": "5a7520868a4829474e6d3116c480dd08",
 "assets/assets/fonts/Raleway-Bold.ttf": "21c82294041b1504a5cbe4f566c8acd6",
 "assets/assets/fonts/Raleway-Italic.ttf": "5579b5fda3005b7d349336b3425b9f89",
 "assets/assets/fonts/Raleway-Regular.ttf": "d95649da7dfb965a289ac29105ce8771",
@@ -25,6 +25,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "0f59fbdaeba5c84a33c13c17c72f758f
 "assets/assets/projects/danieloli.jpeg": "e2c01878edea6718c478c59f8a2520d9",
 "assets/assets/projects/danieloliGG.jpeg": "88bed8e8377666bb03de6d66e11359ed",
 "assets/assets/projects/danielolimob.jpeg": "6213601b4a5d3c5680f6381d3e699461",
+"assets/assets/projects/fiosoul.png": "d3c8541d0190333d51cfed19e887e42f",
+"assets/assets/projects/fiosoulGG.png": "e63985135e2d2bae084daed0cb0d9367",
+"assets/assets/projects/fiosoulmob.jpeg": "1f365b3733dbf6dc9c14b3def26e607e",
 "assets/assets/projects/pex.jpeg": "790c1cd99b3033534e31e3d03915c6e6",
 "assets/assets/projects/pexGG.jpeg": "1c22e710b5a45e461c4920ba0f5f4985",
 "assets/assets/projects/pexmob.jpeg": "a73b573c5b207e4a80b3ed4dc0a458cc",
@@ -34,6 +37,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "0f59fbdaeba5c84a33c13c17c72f758f
 "assets/assets/projects/psialice.jpeg": "b51e984eb7289a97c1c3686515c8feb0",
 "assets/assets/projects/psialiceGG.jpeg": "fcb5b9b0a1c1b1295266ca12d122f642",
 "assets/assets/projects/psialicemob.jpeg": "b0524df973146bc179d06a239973cf45",
+"assets/assets/projects/stq.png": "578df1ceb2b8cd8262a88a091e932e45",
+"assets/assets/projects/stqGG.png": "5b341798cc8a539769613b608dbbd2b0",
+"assets/assets/projects/stqmob.jpeg": "642380a12c0b1f19123e3bfbe4fe42ed",
 "assets/FontManifest.json": "128381ed47c9afc4e969d93a9138961f",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
 "assets/NOTICES": "feb4a4c9c49a533a1eb4e29709f525e6",
@@ -58,9 +64,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "0f59fbdaeba5c84a33c13c17c72f758f
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "8ef7c9b9417592be982fb7d46d28f99a",
-"/": "8ef7c9b9417592be982fb7d46d28f99a",
-"main.dart.js": "2546b601e972a4fb6f3f1be3fa792062",
+"index.html": "615984b127996b7f1cb90af8cf9c9d18",
+"/": "615984b127996b7f1cb90af8cf9c9d18",
+"main.dart.js": "db3cbf44860ec64c7a4820a55dc00862",
 "manifest.json": "e463b3947f288bb40c5e87c67716a736",
 "version.json": "1d3fa036e39f58f2533921dc98aa93c2"};
 // The application shell files that are downloaded before a service worker can

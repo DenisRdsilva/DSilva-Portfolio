@@ -29,7 +29,7 @@ List<Map> wordList = [
   {'word': 'Typescript/NextJS', 'value': 65},
   {'word': 'Javascript/ReactJS', 'value': 60},
   {'word': 'Typescript/NodeJS', 'value': 55},
-  {'word': 'Javascript/Vanilla', 'value': 50},
+  {'word': 'Javascript', 'value': 50},
 ];
 
 class _WordCloudWidgetState extends State<WordCloudWidget> {

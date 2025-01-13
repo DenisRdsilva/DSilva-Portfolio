@@ -83,6 +83,14 @@ List<Projects> projectList = [
       displayTitle: false,
       urlSite: 'https://basicalculatormath.web.app/'),
   Projects(
+      name: "APotiguar (Velty)",
+      type: "Javascript",
+      imageDesktop: "assets/projects/potiguar.png",
+      imageLarge: "assets/projects/potiguarGG.png",
+      imageMobile: "assets/projects/potiguarmob.jpeg",
+      displayTitle: false,
+      urlSite: 'https://www.apotiguar.com.br/'),
+  Projects(
       name: "Fio Soul (Velty)",
       type: "Javascript/Liquid",
       imageDesktop: "assets/projects/fiosoul.png",
@@ -98,14 +106,6 @@ List<Projects> projectList = [
       imageMobile: "assets/projects/stqmob.jpeg",
       displayTitle: false,
       urlSite: 'https://www.semetiqueta.com.br/'),
-  // Projects(
-  //     name: "Calculadora Básica",
-  //     type: "Javascript/NodeJS",
-  //     imageDesktop: "assets/projects/calc.jpeg",
-  //     imageLarge: "assets/projects/calcGG.jpeg",
-  //     imageMobile: "assets/projects/calcmob.jpeg",
-  //     displayTitle: false,
-  //     urlSite: 'https://basicalculatormath.web.app/'),
 ];
 
 class AboutMeObject {
@@ -121,12 +121,12 @@ List<AboutMeObject> aboutMeList = [
   ]),
   AboutMeObject(title: "Formação", texts: [
     "(2023-Atualmente) Graduando em Sistemas para Internet",
-    "(2022-2024) Técnico em TI, com ênfase em informática para Internet",
+    "(2022-2024) Técnico em TI, com ênfase em Informática para Internet",
     "(2014-2019) Bacharelado em Geofísica (primeiro contato com programação em Python)."
   ]),
   AboutMeObject(title: "Experiência Profissional", texts: [
-    "(2024-Atualmente) Trainee: Desenvolvedor Front-End na Velty (React, React Native, Next)",
-    "(2023-2024) Estagio: Desenvolvedor Front-End na Velty (React, React Native, Next)",
+    "(2024/Maio - 2024/Dezembro) Trainee: Desenvolvedor Front-End na Velty (React, React Native, Next)",
+    "(2023/Abril - 2024/Abril) Estagio: Desenvolvedor Front-End na Velty (React, React Native, Next)",
     "(2022-Atualmente) Freelancer: Desenvolvimento de sites e aplicativos (Flutter)",
     "(2022-Atualmente) Voluntário: Desenvolvedor Front-End na Plataforma Obama do Instituto Metrópole Digital (Flutter).",
   ])

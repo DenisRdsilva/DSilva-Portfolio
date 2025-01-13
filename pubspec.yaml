@@ -88,6 +88,15 @@ flutter:
     - assets/projects/psialice.jpeg
     - assets/projects/psialicemob.jpeg
     - assets/projects/psialiceGG.jpeg
+    - "assets/projects/potiguar.png"
+    - "assets/projects/potiguarGG.png"
+    - "assets/projects/potiguarmob.jpeg"
+    - assets/projects/stq.png
+    - assets/projects/stqmob.jpeg
+    - assets/projects/stqGG.png
+    - assets/projects/fiosoul.png
+    - assets/projects/fiosoulmob.jpeg
+    - assets/projects/fiosoulGG.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
